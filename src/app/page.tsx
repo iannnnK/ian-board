@@ -1,6 +1,4 @@
-import Image from "next/image";
-import {Metadata} from "next";
-
 export default function Page() {
-    return '...'
+    return <img src="/character.png" alt="character"
+                style={{width: '500px', alignItems: 'center', margin: '0 20%'}}/>
 }
