@@ -8,6 +8,7 @@ export default function CreateUserBtn() {
         // boardCreateDto.writer = 'ian';
         // boardCreateDto.create_at = new Date();
         // await createBoard(boardCreateDto);
+
         console.log('가입버튼 클릭');
     };
 

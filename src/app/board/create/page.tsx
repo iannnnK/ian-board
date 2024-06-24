@@ -25,7 +25,7 @@ export default function BoardForm() {
                         <tbody>
                             <tr>
                                 <th scope="row">
-                                    <label>제목</label>{" "}
+                                    <label>제목</label>
                                 </th>
                                 <td>
                                     <input type="text" id="board-title" ref={titleRef} />

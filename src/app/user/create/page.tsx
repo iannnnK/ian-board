@@ -19,20 +19,19 @@ export default function UserCreatePage() {
                                     <input type="text" id="user-email" />
                                 </td>
                             </tr>
-
                             <tr>
                                 <th scope="row">
                                     <label>비밀번호</label>
                                 </th>
-                                <td>                
-                                    <input type="text" id="user-password" />                                
+                                <td>
+                                    <input type="text" id="user-password" />
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <CreateUserBtn />
-            </div>       
+            </div>
         </>
     );
 }
