@@ -3,7 +3,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
     return (
         <>
-            <div id="title-wrap">
+            <div className="title-wrap">
                 <a href="/">게시판</a>
             </div>
             {children}

@@ -20,11 +20,10 @@ export default function CreateBoardBtn({ getFormData }) {
     };
 
     return (
-        <div className="btn-group pt40">
+        <div>
             <button
                 type="submit"
                 className="button purple large"
-                id="regist"
                 onClick={handleClick}
             >
                 등록

@@ -5,7 +5,7 @@ export default function UserLayout({
 }) {
     return (
         <>
-            <div id="title-wrap">
+            <div className="title-wrap">
                 <a href="/">회원가입</a>
             </div>
             {children}

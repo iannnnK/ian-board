@@ -4,12 +4,13 @@ h1 a {
 
 body {
     margin: 40px auto;
-    width: 60%;
+    width: 800px;
     align-items: center;
 }
 
-#title-wrap {
+.title-wrap {
     text-align: center;
+    width: 300px;
     padding: 20px 10px;
     margin: 0 auto 10px auto;
     border-style: solid;
@@ -19,7 +20,7 @@ body {
     border-width: 3px;
 }
 
-#title-wrap a {
+.title-wrap a {
     color: black;
     font-size: 40px;
     text-decoration: none;
@@ -68,6 +69,32 @@ tr {
     height: 400px;
     display: flex;
 }
+/* 사용자 페이지 */
+
+#sign-up {
+    margin: 10px auto;
+    width: 400px;
+    align-items: center;
+}
+
+#user-email {
+    width: 80%;
+}
+
+#user-password {
+    width: 80%;
+}
+
+#user-create-btn {
+    width: 80px;
+    align-items: center;
+}
+
+#create-btn-wrap {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px auto;
+}
 
 /* 아래는 사용안함. --------------- */
 
@@ -76,8 +103,9 @@ tr {
     width: calc(100% - 260px);
 }
 
-.board-list-util:after, .board-list-util:before {
-    content: '';
+.board-list-util:after,
+.board-list-util:before {
+    content: "";
     display: table;
 }
 
@@ -85,8 +113,9 @@ tr {
     clear: both;
 }
 
-.board-list-util:after, .board-list-util:before {
-    content: '';
+.board-list-util:after,
+.board-list-util:before {
+    content: "";
     display: table;
 }
 
@@ -108,7 +137,8 @@ tr {
     background-color: #f2f4f5;
 }
 
-.board-list > tbody > tr > td, .board-list > tbody > tr > th {
+.board-list > tbody > tr > td,
+.board-list > tbody > tr > th {
     height: 45px;
     padding: 10px 20px 10px 20px;
     font-size: 20px;
@@ -124,13 +154,13 @@ div#notfound {
     text-align: center;
 }
 
-.board-list > tbody > tr > td > a, .board-list > tbody > tr > th > a {
+.board-list > tbody > tr > td > a,
+.board-list > tbody > tr > th > a {
     display: inline-block;
     margin: 0;
     padding: 0;
     vertical-align: middle;
 }
-
 
 .pagination {
     clear: both;
@@ -156,7 +186,8 @@ div#notfound {
     border-radius: 4px;
 }
 
-.pagination .active { /* 선택된 a 태그에 적용할 .active 클래스 스타일  */
+.pagination .active {
+    /* 선택된 a 태그에 적용할 .active 클래스 스타일  */
     color: #fff;
     background-color: #01738b;
     border-color: #01738b;
