@@ -3,15 +3,23 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("POSTGRESQL_DATABASE_URL")
 }
 
 model Board {
   id        Int       @id @default(autoincrement())
   title     String    @db.VarChar(101)
   content   String    @db.Text
-  create_at DateTime  @default(now()) @db.DateTime(0)
-  update_at DateTime? @updatedAt @db.DateTime(0)
-  writer    String    @db.VarChar(45)
+  create_at DateTime  @default(now()) @db.Date()
+  update_at DateTime? @updatedAt @db.Date()
+  writer    User      @relation(fields: [writerId], references: [email])
+  writerId  String    @db.VarChar(45)
+}
+
+model User {
+  email    String  @id
+  password String  @db.VarChar(31)
+  nickname String  @db.VarChar(11)
+  Boards   Board[]
 }
