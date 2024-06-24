@@ -24,6 +24,6 @@ export default async function BoardList() {
 async function getBoard() {
     const response = await fetch('http://localhost:3000/api/board');
     const data = response.json();
-    console.log(data);
+    console.log('response', data);
     return data;
 }
