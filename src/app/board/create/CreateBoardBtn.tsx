@@ -2,14 +2,30 @@
 
 import { NextRequest } from "next/server";
 
-export default function CreateBoardBtn() {
+interface BoardCreateDto {
+    title: string;
+    content: string;
+    create_at: Date;
+    writer: string;
+}
+
+export default function CreateBoardBtn({ getFormData }) {
+    const handleClick = async (event: { preventDefault: () => void; }) => {
+        event.preventDefault(); // 기본 동작을 막습니다.
+
+        const boardCreateDto: BoardCreateDto = getFormData();
+        boardCreateDto.writer = 'ian';
+        boardCreateDto.create_at = new Date();
+        await createBoard(boardCreateDto);
+    };
+
     return (
         <div className="btn-group pt40">
             <button
                 type="submit"
                 className="button purple large"
                 id="regist"
-                onClick={createBoard}
+                onClick={handleClick}
             >
                 등록
             </button>
@@ -17,15 +33,21 @@ export default function CreateBoardBtn() {
     );
 }
 
-async function createBoard() {
+async function createBoard(boardCreateDto: BoardCreateDto) {
     const request = new NextRequest("http://localhost:3000/api/board", {
         method: "POST",
-        body: '{"foo": "bar"}',
+        body: JSON.stringify(boardCreateDto),
     });
 
-    let createBoard = await fetch(request);
+    try {
+        const response = await fetch(request);
+        if (!response.ok) {
+            throw new Error("통신 실패");
+        }
 
-    console.log("createBoard", createBoard);
-    alert("생성완료");
-    return;
+        const data = await response.json();
+        console.log("Success : ", data);
+    } catch (error) {
+        console.log("Error : ", error);
+    }
 }

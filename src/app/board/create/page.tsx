@@ -1,6 +1,18 @@
+'use client'
+
+import React, { useRef } from "react";
 import CreateBoardBtn from "./CreateBoardBtn";
 
 export default function BoardForm() {
+    const titleRef = useRef();
+    const contentRef = useRef();
+
+    const getFormData = () => {
+        const title = titleRef.current.value;
+        const content = contentRef.current.value;
+        return { title, content};
+    };
+
     return (
         <>
             <div id="contents" className="">
@@ -14,44 +26,26 @@ export default function BoardForm() {
                             <tr>
                                 <th scope="row">
                                     <label>제목</label>{" "}
-                                    <em className="font-orange">*</em>
                                 </th>
                                 <td>
-                                    <input
-                                        type="text"
-                                        name="inqTitle"
-                                        id="qnaCustInqTitle"
-                                        className="input-text"
-                                    />
+                                    <input type="text" id="board-title" ref={titleRef} />
                                 </td>
                             </tr>
 
                             <tr>
                                 <th scope="row">
-                                    <label>내용</label>{" "}
-                                    <em className="font-orange">*</em>
+                                    <label>내용</label>
                                 </th>
                                 <td>
                                     <div className="textarea">
-                                        <textarea
-                                            id="textarea"
-                                            name="inqDetail"
-                                            title="내용입력"
-                                            className="input-textarea"
-                                        ></textarea>
-                                        {/* <div className="util">
-                                            <p className="count">
-                                                <span id="textareaCnt">0</span>{" "}
-                                                / 2000
-                                            </p>
-                                        </div> */}
+                                        <textarea id="board-content" ref={contentRef}></textarea>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <CreateBoardBtn />
+                <CreateBoardBtn getFormData={getFormData}/>
             </div>
         </>
     );
