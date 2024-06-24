@@ -1,5 +1,5 @@
 import Link from "next/link";
-import BoardList from "./board/BoardList";
+import BoardList from "./BoardList";
 
 export default function BoardPage() {
     return (
