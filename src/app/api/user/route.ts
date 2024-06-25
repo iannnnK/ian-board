@@ -6,8 +6,8 @@ const prisma = new PrismaClient();
 async function POST(request: NextRequest) {
     try {
         const data = {
-            emali: 'asdfasdf'
-        }
+            emali: "asdfasdf",
+        };
         const account = await prisma.user.create({ data });
         return NextResponse.json(account);
     } catch (error: any) {
@@ -16,4 +16,4 @@ async function POST(request: NextRequest) {
     }
 }
 
-export { GET, POST };
+export { POST };

@@ -4,7 +4,6 @@ interface BoardListData {
     id: number;
     title: string;
     create_at: string;
-    writer: string;
 }
 
 export default async function BoardList() {

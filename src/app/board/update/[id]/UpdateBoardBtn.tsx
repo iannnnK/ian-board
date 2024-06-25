@@ -3,20 +3,17 @@
 import { redirect } from "next/navigation";
 import { NextRequest } from "next/server";
 
-interface BoardCreateDto {
+interface BoardUpdateDto {
     title: string;
     content: string;
-    create_at: Date;
-    writer: string;
 }
 
 export default function CreateBoardBtn({ getFormData }) {
     const handleClick = async (event: { preventDefault: () => void; }) => {
         event.preventDefault(); // 기본 동작을 막습니다.
-
-        const boardCreateDto: BoardCreateDto = getFormData();
-        boardCreateDto.create_at = new Date();
-        await createBoard(boardCreateDto);
+        console.log('수정 버튼 클릭');
+        const {id, title, content} = getFormData();
+        await updateBoard({title, content}, id);
     };
 
     return (
@@ -32,10 +29,10 @@ export default function CreateBoardBtn({ getFormData }) {
     );
 }
 
-async function createBoard(boardCreateDto: BoardCreateDto) {
-    const request = new NextRequest("http://localhost:3000/api/board", {
-        method: "POST",
-        body: JSON.stringify(boardCreateDto),
+async function updateBoard(BoardUpdateDto: BoardUpdateDto, id: string) {
+    const request = new NextRequest("http://localhost:3000/api/board/" + id, {
+        method: "PATCH",
+        body: JSON.stringify(BoardUpdateDto),
     });
 
     try {

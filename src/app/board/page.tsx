@@ -36,6 +36,7 @@ export default function BoardPage() {
                     </tbody>
                 </table>
             </div>
+            <Link href="/board/create">글쓰기</Link>
         </>
     );
 }
