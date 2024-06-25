@@ -1,212 +1,76 @@
-h1 a {
-    text-decoration: none;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+
+        --card: 0 0% 100%;
+        --card-foreground: 222.2 84% 4.9%;
+
+        --popover: 0 0% 100%;
+        --popover-foreground: 222.2 84% 4.9%;
+
+        --primary: 222.2 47.4% 11.2%;
+        --primary-foreground: 210 40% 98%;
+
+        --secondary: 210 40% 96.1%;
+        --secondary-foreground: 222.2 47.4% 11.2%;
+
+        --muted: 210 40% 96.1%;
+        --muted-foreground: 215.4 16.3% 46.9%;
+
+        --accent: 210 40% 96.1%;
+        --accent-foreground: 222.2 47.4% 11.2%;
+
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
+
+        --border: 214.3 31.8% 91.4%;
+        --input: 214.3 31.8% 91.4%;
+        --ring: 222.2 84% 4.9%;
+
+        --radius: 0.5rem;
+    }
+
+    .dark {
+        --background: 222.2 84% 4.9%;
+        --foreground: 210 40% 98%;
+
+        --card: 222.2 84% 4.9%;
+        --card-foreground: 210 40% 98%;
+
+        --popover: 222.2 84% 4.9%;
+        --popover-foreground: 210 40% 98%;
+
+        --primary: 210 40% 98%;
+        --primary-foreground: 222.2 47.4% 11.2%;
+
+        --secondary: 217.2 32.6% 17.5%;
+        --secondary-foreground: 210 40% 98%;
+
+        --muted: 217.2 32.6% 17.5%;
+        --muted-foreground: 215 20.2% 65.1%;
+
+        --accent: 217.2 32.6% 17.5%;
+        --accent-foreground: 210 40% 98%;
+
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+
+        --border: 217.2 32.6% 17.5%;
+        --input: 217.2 32.6% 17.5%;
+        --ring: 212.7 26.8% 83.9%;
+    }
 }
 
-body {
-    margin: 40px auto;
-    width: 800px;
-    align-items: center;
-}
-
-.title-wrap {
-    text-align: center;
-    width: 300px;
-    padding: 20px 10px;
-    margin: 0 auto 10px auto;
-    border-style: solid;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-width: 3px;
-}
-
-.title-wrap a {
-    color: black;
-    font-size: 40px;
-    text-decoration: none;
-}
-
-#search-wrap {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-}
-
-#search-box {
-    height: 24px;
-    font-size: 15px;
-    border-radius: 5px 5px;
-    margin-right: 3px;
-}
-
-#table-wrap {
-    margin-top: 10px;
-}
-
-table {
-    width: 100%;
-    margin: 7px auto;
-    border-collapse: collapse;
-    text-align: center;
-    table-layout: fixed;
-    border-bottom: 1px solid black;
-}
-
-tr {
-    margin: 30px 0;
-    padding: 20px 0;
-    line-height: 2;
-    border-top: 1px solid #000;
-}
-
-#board-title {
-    width: 90%;
-    display: flex;
-}
-
-#board-content {
-    width: 90%;
-    height: 400px;
-    display: flex;
-}
-/* 사용자 페이지 */
-
-#sign-up {
-    margin: 10px auto;
-    width: 400px;
-    align-items: center;
-}
-
-#user-email {
-    width: 80%;
-}
-
-#user-password {
-    width: 80%;
-}
-
-#user-create-btn {
-    width: 80px;
-    align-items: center;
-}
-
-#create-btn-wrap {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 10px auto;
-}
-
-/* 아래는 사용안함. --------------- */
-
-.container.has-lnb #contents {
-    float: right;
-    width: calc(100% - 260px);
-}
-
-.board-list-util:after,
-.board-list-util:before {
-    content: "";
-    display: table;
-}
-
-.board-list-util:after {
-    clear: both;
-}
-
-.board-list-util:after,
-.board-list-util:before {
-    content: "";
-    display: table;
-}
-
-.board-list-util {
-    margin: 30px 0 15px 0;
-    text-align: right;
-}
-
-.board-list {
-    line-height: 1.3;
-}
-
-.board-list > thead > tr > th {
-    height: 45px;
-    padding: 3px 10px;
-    color: #222;
-    border: 1px solid #eaeaea;
-    border-width: 0 0 1px 0;
-    background-color: #f2f4f5;
-}
-
-.board-list > tbody > tr > td,
-.board-list > tbody > tr > th {
-    height: 45px;
-    padding: 10px 20px 10px 20px;
-    font-size: 20px;
-    border: 1px solid #eaeaea;
-    border-width: 0 0 1px 0;
-    text-align: center;
-}
-
-div#notfound {
-    margin: auto auto;
-    width: 800px;
-    height: 40px;
-    text-align: center;
-}
-
-.board-list > tbody > tr > td > a,
-.board-list > tbody > tr > th > a {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    vertical-align: middle;
-}
-
-.pagination {
-    clear: both;
-    position: relative;
-    margin: 0 auto;
-    padding: 30px 0 0 0;
-    text-align: center;
-}
-
-.pagination a {
-    display: inline-block;
-    position: relative;
-    min-width: 32px;
-    height: 32px;
-    margin: 0;
-    padding: 0 8px;
-    border: 1px solid #ebebeb;
-    text-decoration: none;
-    line-height: 30px;
-    color: #333;
-    font-weight: 400;
-    vertical-align: middle;
-    border-radius: 4px;
-}
-
-.pagination .active {
-    /* 선택된 a 태그에 적용할 .active 클래스 스타일  */
-    color: #fff;
-    background-color: #01738b;
-    border-color: #01738b;
-}
-
-.borard-search {
-    height: 40px;
-}
-
-.button.purple {
-    color: #fff;
-    font-weight: 400;
-    line-height: 36px;
-    background: #503396;
-    border: 1px;
-    border-color: purple;
-    border-radius: 5px 5px;
-    width: 60px;
-    height: 36px;
-    font-size: 15px;
-    cursor: pointer;
+@layer base {
+    * {
+        /* @apply border-border; */
+    }
+    body {
+        /* @apply bg-background text-foreground; */
+    }
 }
