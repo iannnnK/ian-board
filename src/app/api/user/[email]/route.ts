@@ -19,7 +19,7 @@ async function isExist(email: string) {
         },
     });
 
-    if(!availableEmail) {
+    if (!availableEmail) {
         return true;
     }
     return false;

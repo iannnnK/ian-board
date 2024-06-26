@@ -1,11 +1,7 @@
-'use client'
-
-import BoardList from "./BoardList";
-import { useRouter } from "next/navigation";
+import BoardList from "../../components/board/BoardList";
+import BoardWriteRoutingBtn from "@/components/board/BoardWriteRoutingBtn";
 
 export default function BoardPage() {
-    const router = useRouter();
-
     return (
         <>
             <div id="search-wrap">
@@ -40,13 +36,7 @@ export default function BoardPage() {
                     </tbody>
                 </table>
             </div>
-            <button
-                type="button"
-                className="button purple large"
-                onClick={() => router.push(`/board/create`)}
-            >
-                글쓰기
-            </button>
+            <BoardWriteRoutingBtn />
         </>
     );
 }

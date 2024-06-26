@@ -1,10 +1,14 @@
-'use client'
+"use client";
 
-import { useState } from "react";
-import CreateUserBtn from "./CreateUserBtn";
+import { useRef, useState } from "react";
+import UserSignupBtn, {
+    emailDuplicateCheck,
+} from "../../../components/user/UserSignupBtn";
 
 export default function UserCreatePage() {
-    const [email, setEmail] =  useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [validateEmail, setValidateEmail] = useState(false);
 
     return (
         <>
@@ -22,10 +26,27 @@ export default function UserCreatePage() {
                                     <label>이메일</label>
                                 </th>
                                 <td>
-                                    <input type="text" id="user-email"/>
+                                    <input
+                                        type="text"
+                                        id="user-email"
+                                        value={email}
+                                        onChange={(e) => {
+                                            setEmail(e.target.value);
+                                            setValidateEmail(false);
+                                        }}
+                                    />
                                 </td>
                                 <td>
-                                    <button type="submit" id="email-check">중복체크</button>
+                                    <button
+                                        type="submit"
+                                        id="email-check"
+                                        onClick={() => {
+                                            emailDuplicateCheck(`${email}`);
+                                            setValidateEmail(true);
+                                        }}
+                                    >
+                                        중복체크
+                                    </button>
                                 </td>
                             </tr>
                             <tr>
@@ -33,13 +54,20 @@ export default function UserCreatePage() {
                                     <label>비밀번호</label>
                                 </th>
                                 <td>
-                                    <input type="text" id="user-password" />
+                                    <input
+                                        type="text"
+                                        id="user-password"
+                                        value={password}
+                                        onChange={(e) =>
+                                            setPassword(e.target.value)
+                                        }
+                                    />
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <CreateUserBtn />
+                <UserSignupBtn email={email} password={password} validateEmail={validateEmail}/>
             </div>
         </>
     );

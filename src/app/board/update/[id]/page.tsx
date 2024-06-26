@@ -1,59 +1,37 @@
-"use client";
+import { getBoardDetail } from '@/components/board/BoardDetail';
+import BoardUpdateDetailForm from '@/components/board/BoardUpdateDetailForm';
 
-import React, { useRef } from "react";
-import UpdateBoardBtn from "./UpdateBoardBtn";
+export default async function BoardForm({ params }: { params: { id: string } }) {
+    // const {title, setTitle} = useState("")
 
-export default function BoardForm({ params }: { params: { id: string } }) {
-    const titleRef = useRef();
-    const contentRef = useRef();
+    // const titleRef = useRef();
+    // const contentRef = useRef();
 
-    const getFormData = () => {
-        const title = titleRef.current.value;
-        const content = contentRef.current.value;
-        const id = params.id;
-        return { id, title, content };
-    };
+    // const getFormData = () => {
+    //     const title = titleRef.current.value;
+    //     const content = contentRef.current.value;
+    //     const id = params.id;
+    //     return { id, title, content };
+    // };
 
+    const board = await getBoardDetail(params.id);
+    // const board = response.json;
     return (
         <>
             <div id="contents" className="">
-                <div className="table-wrap mt10">
+                {/* <div className="table-wrap mt10">
                     <table className="board-form va-m">
                         <colgroup>
                             <col width="10%" />
                             <col />
                         </colgroup>
                         <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <label>제목</label>
-                                </th>
-                                <td>
-                                    <input
-                                        type="text"
-                                        id="board-title"
-                                        ref={titleRef}
-                                    />
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row">
-                                    <label>내용</label>
-                                </th>
-                                <td>
-                                    <div className="textarea">
-                                        <textarea
-                                            id="board-content"
-                                            ref={contentRef}
-                                        ></textarea>
-                                    </div>
-                                </td>
-                            </tr>
+                            <BoardUpdateDetailForm title={response.title} content={response.content}/>
                         </tbody>
                     </table>
                 </div>
-                <UpdateBoardBtn getFormData={getFormData}/>
+                <UpdateBoardBtn getFormData={getFormData} /> */}
+                <BoardUpdateDetailForm id={params.id} initTitle={board.title} initContent={board.content} />
             </div>
         </>
     );

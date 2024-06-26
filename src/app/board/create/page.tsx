@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useRef } from "react";
-import CreateBoardBtn from "./CreateBoardBtn";
+import CreateBoardBtn from "../../../components/board/CreateBoardBtn";
 
 export default function BoardForm() {
     const titleRef = useRef();

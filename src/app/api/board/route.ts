@@ -15,7 +15,7 @@ async function GET(request: NextRequest) {
 async function POST(request: NextRequest) {
     try {
         const data = await request.json();
-        console.log(data);
+        console.log("게시글 등록 정보", data);
         const createBoard = await prisma.board.create({ data });
         return NextResponse.json(createBoard);
     } catch (error: any) {
