@@ -73,12 +73,21 @@ tr {
 
 #sign-up {
     margin: 10px auto;
-    width: 400px;
+    width: 500px;
     align-items: center;
 }
 
+#login-wrap {
+    margin: 10px auto;
+    width: 400px;
+    align-items: center;
+}
 #user-email {
     width: 80%;
+}
+
+#email-check {
+    font-size: 15px;
 }
 
 #user-password {
@@ -88,6 +97,12 @@ tr {
 #user-create-btn {
     width: 80px;
     align-items: center;
+}
+
+#login-btn-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 #create-btn-wrap {
@@ -100,6 +115,10 @@ tr {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+#board-content {
+    white-space: pre-wrap;
 }
 /* 아래는 사용안함. --------------- */
 
