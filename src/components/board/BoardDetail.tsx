@@ -1,10 +1,8 @@
 import { NextRequest } from "next/server";
 
-interface BoardDetailData {
-    // id: number;
+export interface BoardDetailData {
     title: string;
     content: string;
-    // create_at: string;
 }
 
 export default async function BoardDetail({ params }: any) {
@@ -29,11 +27,9 @@ export default async function BoardDetail({ params }: any) {
     );
 }
 
-async function getBoardDetail(id: string) {
+export async function getBoardDetail(id: string) {
     const response = await fetch("http://localhost:3000/api/board/" + id);
     const data = response.json();
-
-    console.log("response", data);
     return data;
 }
 

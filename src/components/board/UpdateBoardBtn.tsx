@@ -1,6 +1,3 @@
-"use client";
-
-import { redirect } from "next/navigation";
 import { NextRequest } from "next/server";
 
 interface BoardUpdateDto {
@@ -8,20 +5,14 @@ interface BoardUpdateDto {
     content: string;
 }
 
-export default function CreateBoardBtn({ getFormData }) {
-    const handleClick = async (event: { preventDefault: () => void; }) => {
-        event.preventDefault(); // 기본 동작을 막습니다.
-        console.log('수정 버튼 클릭');
-        const {id, title, content} = getFormData();
-        await updateBoard({title, content}, id);
-    };
-
+export default function UpdateBoardBtn({ id, title, content }) {
     return (
         <div>
             <button
                 type="submit"
                 className="button purple large"
-                onClick={handleClick}
+                // onClick={handleClick}
+                onClick={() => updateBoard({ title, content }, id)}
             >
                 등록
             </button>
@@ -29,10 +20,10 @@ export default function CreateBoardBtn({ getFormData }) {
     );
 }
 
-async function updateBoard(BoardUpdateDto: BoardUpdateDto, id: string) {
+async function updateBoard(boardUpdateDto: BoardUpdateDto, id: string) {
     const request = new NextRequest("http://localhost:3000/api/board/" + id, {
         method: "PATCH",
-        body: JSON.stringify(BoardUpdateDto),
+        body: JSON.stringify(boardUpdateDto),
     });
 
     try {
@@ -46,5 +37,5 @@ async function updateBoard(BoardUpdateDto: BoardUpdateDto, id: string) {
     } catch (error) {
         console.log("Error : ", error);
     }
-    window.location.href = '/board'
+    window.location.href = "/board";
 }

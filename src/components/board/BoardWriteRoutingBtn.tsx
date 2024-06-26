@@ -1,16 +1,16 @@
 'use client'
+
 import { useRouter } from "next/navigation";
 
-export function BoardBtn({id, text}) {
+export default function BoardWriteRoutingBtn() {
     const router = useRouter();
-
     return (
         <button
             type="button"
             className="button purple large"
-            onClick={() => router.push(`/board/update/${id}`)}
+            onClick={() => router.push(`/board/create`)}
         >
-            {text}
+            글쓰기
         </button>
     );
 }

@@ -12,7 +12,7 @@ interface BoardCreateDto {
 
 export default function CreateBoardBtn({ getFormData }) {
     const handleClick = async (event: { preventDefault: () => void; }) => {
-        event.preventDefault(); // 기본 동작을 막습니다.
+        event.preventDefault();
 
         const boardCreateDto: BoardCreateDto = getFormData();
         boardCreateDto.create_at = new Date();
