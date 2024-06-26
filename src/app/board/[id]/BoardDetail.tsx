@@ -1,16 +1,14 @@
 import { NextRequest } from "next/server";
 
 interface BoardDetailData {
-    id: number;
+    // id: number;
     title: string;
     content: string;
-    create_at: string;
+    // create_at: string;
 }
 
-export default async function BoardDetail({ params }) {
+export default async function BoardDetail({ params }: any) {
     const boardDetail: BoardDetailData = await getBoardDetail(params);
-
-    console.log("boardDetail", boardDetail);
 
     return (
         <>
