@@ -96,6 +96,11 @@ tr {
     margin: 10px auto;
 }
 
+#board-btn-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 /* 아래는 사용안함. --------------- */
 
 .container.has-lnb #contents {

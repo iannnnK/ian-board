@@ -1,7 +1,11 @@
-import Link from "next/link";
+'use client'
+
 import BoardList from "./BoardList";
+import { useRouter } from "next/navigation";
 
 export default function BoardPage() {
+    const router = useRouter();
+
     return (
         <>
             <div id="search-wrap">
@@ -32,11 +36,17 @@ export default function BoardPage() {
                     </thead>
 
                     <tbody>
-                        <BoardList/>
+                        <BoardList />
                     </tbody>
                 </table>
             </div>
-            <Link href="/board/create">글쓰기</Link>
+            <button
+                type="button"
+                className="button purple large"
+                onClick={() => router.push(`/board/create`)}
+            >
+                글쓰기
+            </button>
         </>
     );
 }

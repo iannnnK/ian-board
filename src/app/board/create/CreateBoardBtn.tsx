@@ -49,5 +49,5 @@ async function createBoard(boardCreateDto: BoardCreateDto) {
     } catch (error) {
         console.log("Error : ", error);
     }
-    window.location.href = '/board'
+    window.location.href = '/board';
 }
