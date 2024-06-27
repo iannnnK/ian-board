@@ -53,7 +53,7 @@ async function signUp(email: string, password: string, validateEmail: boolean) {
 
         console.log("가입 완료 : ", responseData);
         alert("가입완료 되었습니다.");
-        window.location.href = "/user/login";
+        window.location.href = "/api/auth/signin";
     } catch (error) {
         console.log("Error : ", error);
     }

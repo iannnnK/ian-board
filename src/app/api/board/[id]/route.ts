@@ -12,6 +12,9 @@ async function GET(
             id: Number(params.id),
         },
     });
+    
+    // boardDetail.content = boardDetail.content.replaceAll("\n<br>", "\n");
+    console.log("게시글 조회", boardDetail);
     return NextResponse.json(boardDetail);
 }
 

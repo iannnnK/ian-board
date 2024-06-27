@@ -1,5 +1,6 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import { NextRequest } from "next/server";
 
 interface BoardCreateDto {
@@ -10,14 +11,17 @@ interface BoardCreateDto {
 }
 
 export default function CreateBoardBtn({ title, content }) {
+    const {data: session} = useSession();
+
     const handleClick = async (event: { preventDefault: () => void }) => {
         event.preventDefault();
+        const author = await getAuthorIdByEmail(session?.user?.email);
 
         const boardCreateDto = {
             title: title,
             content: content,
             create_at: new Date(),
-            authorId: 1,
+            authorId: author.id,
         };
 
         console.log("boardCreateDto", boardCreateDto);
@@ -56,4 +60,10 @@ async function createBoard(boardCreateDto: BoardCreateDto) {
         console.log("Error : ", error);
     }
     window.location.href = "/board";
+}
+
+async function getAuthorIdByEmail(email: string) {
+    const response = await fetch(`http://localhost:3000/api/user/login/${email}`);
+    const data = await response.json();
+    return data;
 }

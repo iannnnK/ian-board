@@ -1,3 +1,4 @@
+import { revalidatePath } from "next/cache";
 import Link from "next/link";
 
 interface BoardListData {
@@ -6,11 +7,18 @@ interface BoardListData {
     create_at: string;
 }
 
-
 export default async function BoardList() {
-    const boardList: BoardListData[] = await getBoard();
+    async function getBoardList() {
+        "use server";
+
+        const boardList: BoardListData[] = await getBoard();
+        revalidatePath(`/board`);
+        return boardList;
+    }
+
+
     
-    return boardList.map((board) => (
+    return (await getBoardList()).map((board) => (
         <tr key={board.id}>
             <td>{board.id}</td>
             <td>

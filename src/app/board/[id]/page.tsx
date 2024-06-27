@@ -1,8 +1,5 @@
 import BoardDetailBtnWrap from "@/components/board/BoardDetailBtnWrap";
-import BoardDetail, {
-    BoardDetailData,
-    getBoardDetail,
-} from "../../../components/board/BoardDetail";
+import { revalidatePath } from "next/cache";
 
 export default async function BoardPage({
     params,
@@ -10,8 +7,9 @@ export default async function BoardPage({
     params: { id: string };
 }) {
     const boardDetail: BoardDetailData = await getBoardDetail(params.id);
+    console.log("페이지 boardDetail", boardDetail);
     const email = await getUserEmailById(boardDetail.authorId.toString());
-    
+
     return (
         <>
             <div id="contents" className="">
@@ -33,9 +31,12 @@ export default async function BoardPage({
                                 <th scope="row">
                                     <label>내용</label>
                                 </th>
-                                <td>{boardDetail.content}</td>
+                                <td>
+                                    <p style={{ whiteSpace: "pre-wrap" }}>
+                                        {boardDetail.content}
+                                    </p>
+                                </td>
                             </tr>
-                            {/* <BoardDetail params={params} /> */}
                         </tbody>
                     </table>
                 </div>
@@ -46,8 +47,26 @@ export default async function BoardPage({
 }
 
 async function getUserEmailById(id: string) {
+    "use server";
     const response = await fetch(`http://localhost:3000/api/user/data/${id}`);
     const data = await response.json();
-    console.log('user email', data.email);
+
+    revalidatePath(`/board/${id}`);
     return data.email;
 }
+
+interface BoardDetailData {
+    title: string;
+    content: string;
+    authorId: number;
+}
+
+async function getBoardDetail(id: string) {
+    "use server";
+    const response = await fetch(`http://localhost:3000/api/board/${id}`);
+
+    revalidatePath(`/board/${id}`);
+    return response.json();
+}
+
+export { getBoardDetail };

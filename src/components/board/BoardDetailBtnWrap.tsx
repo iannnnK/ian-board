@@ -1,8 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { deleteBoard } from "./BoardDetail";
+// import { deleteBoard } from "./BoardDetail";
 import { useSession } from "next-auth/react";
+import { NextRequest } from "next/server";
 
 export default function BoardDetailBtnWrap({ id, email }) {
     const router = useRouter();
@@ -25,7 +26,7 @@ export default function BoardDetailBtnWrap({ id, email }) {
                 <button
                     type="button"
                     className="button purple large"
-                    onClick={() => deleteBoard(`${id}`)}
+                    onClick={async () => await deleteBoard(`${id}`)}
                 >
                     삭제
                 </button>
@@ -42,4 +43,19 @@ function checkAuthor({ session, email }) {
         return false;
     }
     return true;
+}
+
+async function deleteBoard(id: string) {
+    if (!confirm("삭제하시겠습니까?")) {
+        return;
+    }
+    const request = new NextRequest(`http://localhost:3000/api/board/${id}`, {
+        method: "DELETE",
+    });
+
+    const response = await fetch(request);
+    if (!response.ok) {
+        throw new Error("실패");
+    }
+    window.location.href = "/board";
 }

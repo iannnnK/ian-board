@@ -11,7 +11,6 @@ export default function UpdateBoardBtn({ id, title, content }) {
             <button
                 type="submit"
                 className="button purple large"
-                // onClick={handleClick}
                 onClick={() => updateBoard({ title, content }, id)}
             >
                 등록
@@ -21,7 +20,7 @@ export default function UpdateBoardBtn({ id, title, content }) {
 }
 
 async function updateBoard(boardUpdateDto: BoardUpdateDto, id: string) {
-    const request = new NextRequest("http://localhost:3000/api/board/" + id, {
+    const request = new NextRequest(`http://localhost:3000/api/board/${id}`, {
         method: "PATCH",
         body: JSON.stringify(boardUpdateDto),
     });
@@ -37,5 +36,5 @@ async function updateBoard(boardUpdateDto: BoardUpdateDto, id: string) {
     } catch (error) {
         console.log("Error : ", error);
     }
-    window.location.href = "/board";
+    window.location.href = `/board/${id}`;
 }

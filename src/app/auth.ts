@@ -15,7 +15,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 },
                 password: {
                     label: "비밀번호",
-                    type: "text",
+                    type: "password",
                 },
             },
             authorize: async (credentials) => {
