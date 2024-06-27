@@ -1,21 +1,27 @@
 "use client";
 
-import { redirect } from "next/navigation";
 import { NextRequest } from "next/server";
 
 interface BoardCreateDto {
     title: string;
     content: string;
     create_at: Date;
-    writer: string;
+    authorId: number;
 }
 
-export default function CreateBoardBtn({ getFormData }) {
-    const handleClick = async (event: { preventDefault: () => void; }) => {
+export default function CreateBoardBtn({ title, content }) {
+    const handleClick = async (event: { preventDefault: () => void }) => {
         event.preventDefault();
 
-        const boardCreateDto: BoardCreateDto = getFormData();
-        boardCreateDto.create_at = new Date();
+        const boardCreateDto = {
+            title: title,
+            content: content,
+            create_at: new Date(),
+            authorId: 1,
+        };
+
+        console.log("boardCreateDto", boardCreateDto);
+
         await createBoard(boardCreateDto);
     };
 
@@ -49,5 +55,5 @@ async function createBoard(boardCreateDto: BoardCreateDto) {
     } catch (error) {
         console.log("Error : ", error);
     }
-    window.location.href = '/board';
+    window.location.href = "/board";
 }

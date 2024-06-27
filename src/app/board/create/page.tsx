@@ -1,17 +1,11 @@
-'use client'
+"use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import CreateBoardBtn from "../../../components/board/CreateBoardBtn";
 
 export default function BoardForm() {
-    const titleRef = useRef();
-    const contentRef = useRef();
-
-    const getFormData = () => {
-        const title = titleRef.current.value;
-        const content = contentRef.current.value;
-        return { title, content};
-    };
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
 
     return (
         <>
@@ -28,7 +22,12 @@ export default function BoardForm() {
                                     <label>제목</label>
                                 </th>
                                 <td>
-                                    <input type="text" id="board-title" ref={titleRef} />
+                                    <input
+                                        type="text"
+                                        id="board-title"
+                                        value={title}
+                                        onChange={e => setTitle(e.target.value)}
+                                    />
                                 </td>
                             </tr>
 
@@ -38,14 +37,18 @@ export default function BoardForm() {
                                 </th>
                                 <td>
                                     <div className="textarea">
-                                        <textarea id="board-content" ref={contentRef}></textarea>
+                                        <textarea
+                                            id="board-content"
+                                            value={content}
+                                            onChange={e => setContent(e.target.value)}
+                                        ></textarea>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <CreateBoardBtn getFormData={getFormData}/>
+                <CreateBoardBtn title={title} content={content} />
             </div>
         </>
     );
