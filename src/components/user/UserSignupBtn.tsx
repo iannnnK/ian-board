@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import { NextRequest } from 'next/server';
 
 export default function UserSignupBtn({ email, password, validateEmail }) {
     return (

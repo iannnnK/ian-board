@@ -3,10 +3,11 @@ import { NextRequest } from "next/server";
 export interface BoardDetailData {
     title: string;
     content: string;
+    authorId: number;
 }
 
-export default async function BoardDetail({ params }: any) {
-    const boardDetail: BoardDetailData = await getBoardDetail(params);
+export default async function BoardDetail({ params }: {params: {id: string}}) {
+    const boardDetail: BoardDetailData = await getBoardDetail(params.id);
 
     return (
         <>
@@ -29,8 +30,7 @@ export default async function BoardDetail({ params }: any) {
 
 export async function getBoardDetail(id: string) {
     const response = await fetch("http://localhost:3000/api/board/" + id);
-    const data = response.json();
-    return data;
+    return response.json();
 }
 
 async function deleteBoard(id: string) {
