@@ -55,7 +55,7 @@ export default function UserCreatePage() {
                                 </th>
                                 <td>
                                     <input
-                                        type="text"
+                                        type="password"
                                         id="user-password"
                                         value={password}
                                         onChange={(e) =>

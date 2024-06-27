@@ -1,12 +1,15 @@
 "use client";
 
 import UserLoginBtn from "@/components/user/UserLoginBtn";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function UserCreatePage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const router = useRouter();
     return (
         <>
             <div id="contents" className="">
@@ -38,7 +41,7 @@ export default function UserCreatePage() {
                                 </th>
                                 <td>
                                     <input
-                                        type="text"
+                                        type="password"
                                         id="user-password"
                                         value={password}
                                         onChange={(e) =>
@@ -50,7 +53,17 @@ export default function UserCreatePage() {
                         </tbody>
                     </table>
                 </div>
-                <UserLoginBtn email={email} password={password}/>
+                <div id="login-btn-wrap">
+                    <UserLoginBtn email={email} password={password} />
+                    <button
+                        type="submit"
+                        className="button purple large"
+                        id="sign-up-route"
+                        onClick={() => router.push(`/user/create`)}
+                    >
+                        회원가입
+                    </button>
+                </div>
             </div>
         </>
     );

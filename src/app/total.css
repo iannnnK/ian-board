@@ -82,6 +82,7 @@ tr {
     width: 400px;
     align-items: center;
 }
+
 #user-email {
     width: 80%;
 }
@@ -105,6 +106,10 @@ tr {
     justify-content: space-evenly;
 }
 
+#sign-up-route {
+    width: 70px;
+    align-items: center;
+}
 #create-btn-wrap {
     display: flex;
     justify-content: space-evenly;
