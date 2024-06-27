@@ -8,7 +8,7 @@ interface BoardListData {
 
 export default async function BoardList() {
     const boardList: BoardListData[] = await getBoard();
-
+    
     return boardList.map((board) => (
         <tr key={board.id}>
             <td>{board.id}</td>
@@ -21,8 +21,7 @@ export default async function BoardList() {
 }
 
 async function getBoard() {
-    const response = await fetch('http://localhost:3000/api/board');
+    const response = await fetch("http://localhost:3000/api/board");
     const data = response.json();
-    console.log('response', data);
     return data;
 }
