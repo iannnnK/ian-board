@@ -1,9 +1,12 @@
-import type { Metadata } from "next";
-import "./total.css";
-// import "./globals.css";
-import { Inter as FontSans } from "next/font/google";
-import { cn } from "@/lib/utils";
+import './total.css';
 
+import UserAuthenticationBtn from '@/components/user/UserAuthenticationBtn';
+import { cn } from '@/lib/utils';
+import { SessionProvider } from 'next-auth/react';
+import { Inter as FontSans } from 'next/font/google';
+
+import type { Metadata } from "next";
+// import "./globals.css";
 const fontSans = FontSans({
     subsets: ["latin"],
     variable: "--font-sans",
@@ -25,8 +28,12 @@ export default function RootLayout({
                     fontSans.variable
                 )}
             >
-                <nav>로그인 로그아웃</nav>
-                {children}
+                <SessionProvider>
+                    <nav>
+                        <UserAuthenticationBtn />
+                    </nav>
+                    {children}
+                </SessionProvider>
             </body>
         </html>
     );

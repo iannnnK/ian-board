@@ -1,8 +1,7 @@
 import { getBoardDetail } from '@/components/board/BoardDetail';
 import BoardUpdateDetailForm from '@/components/board/BoardUpdateDetailForm';
 
-export default async function BoardForm({ params }: { params: { id: string } }) {
-
+export default async function BoardForm({ params }: {params: {id: string}}) {
     const board = await getBoardDetail(params.id);
     
     return (

@@ -6,6 +6,7 @@ interface BoardListData {
     create_at: string;
 }
 
+
 export default async function BoardList() {
     const boardList: BoardListData[] = await getBoard();
     

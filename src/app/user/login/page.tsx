@@ -1,9 +1,8 @@
 "use client";
 
-import UserLoginBtn from "@/components/user/UserLoginBtn";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import CustomUserLoginBtn from '@/components/user/CustomUserLoginBtn';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export default function UserCreatePage() {
     const [email, setEmail] = useState("");
@@ -54,7 +53,7 @@ export default function UserCreatePage() {
                     </table>
                 </div>
                 <div id="login-btn-wrap">
-                    <UserLoginBtn email={email} password={password} />
+                    <CustomUserLoginBtn email={email} password={password} />
                     <button
                         type="submit"
                         className="button purple large"

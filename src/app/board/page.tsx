@@ -1,5 +1,6 @@
-import BoardList from "../../components/board/BoardList";
-import BoardWriteRoutingBtn from "@/components/board/BoardWriteRoutingBtn";
+import BoardWriteRoutingBtn from '@/components/board/BoardWriteRoutingBtn';
+
+import BoardList from '../../components/board/BoardList';
 
 export default function BoardPage() {
     return (
