@@ -25,6 +25,7 @@ export default function RootLayout({
                     fontSans.variable
                 )}
             >
+                <nav>로그인 로그아웃</nav>
                 {children}
             </body>
         </html>

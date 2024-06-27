@@ -8,6 +8,12 @@ body {
     align-items: center;
 }
 
+nav {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
 .title-wrap {
     text-align: center;
     width: 300px;
