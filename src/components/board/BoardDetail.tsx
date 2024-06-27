@@ -3,11 +3,12 @@ import { NextRequest } from "next/server";
 export interface BoardDetailData {
     title: string;
     content: string;
+    authorId: number;
 }
 
 export default async function BoardDetail({ params }: {params: {id: string}}) {
     const boardDetail: BoardDetailData = await getBoardDetail(params.id);
-    
+
     return (
         <>
             <tr>
