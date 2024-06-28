@@ -7,11 +7,11 @@ interface BoardListData {
     create_at: string;
 }
 
-export default async function BoardList() {
+export default async function BoardList(id: number) {
     async function getBoardList() {
         "use server";
 
-        const boardList: BoardListData[] = await getBoard();
+        const boardList: BoardListData[] = await getBoard(Number(id));
         revalidatePath(`/board`);
         return boardList;
     }
@@ -29,8 +29,8 @@ export default async function BoardList() {
     ));
 }
 
-async function getBoard() {
+async function getBoard(id: number) {
     const response = await fetch("http://localhost:3000/api/board");
-    const data = response.json();
+    const data = await response.json();
     return data;
 }

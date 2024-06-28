@@ -1,21 +1,25 @@
-import BoardWriteRoutingBtn from '@/components/board/BoardWriteRoutingBtn';
+import BoardWriteRoutingBtn from "@/components/board/BoardWriteRoutingBtn";
 
-import BoardList from '../../components/board/BoardList';
+import BoardList from "../../components/board/BoardList";
+import BoardPagination from "@/components/board/BoardPagination";
 
 export default function BoardPage() {
     return (
         <>
             <div id="search-wrap">
-                <input
-                    type="text"
-                    id="search-box"
-                    title="검색어를 입력해 주세요."
-                    placeholder="제목을 입력하세요."
-                    name="board-title"
-                />
-                <button type="button" id="search-btn">
-                    검색
-                </button>
+                <BoardWriteRoutingBtn />
+                <div>
+                    <input
+                        type="text"
+                        id="search-box"
+                        title="검색어를 입력해 주세요."
+                        placeholder="제목을 입력하세요."
+                        name="board-title"
+                    />
+                    <button type="button" id="search-btn">
+                        검색
+                    </button>
+                </div>
             </div>
             <div id="table-wrap">
                 <table>
@@ -33,11 +37,11 @@ export default function BoardPage() {
                     </thead>
 
                     <tbody>
-                        <BoardList />
+                        <BoardList id={0}/>
                     </tbody>
                 </table>
             </div>
-            <BoardWriteRoutingBtn />
+            <BoardPagination />
         </>
     );
 }

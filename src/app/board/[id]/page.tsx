@@ -19,7 +19,7 @@ export default async function BoardPage({
                             <col width="10%" />
                             <col />
                         </colgroup>
-                        <tbody key={params.id}>
+                        <tbody key={params.id} id="board-detail-wrap">
                             <tr>
                                 <th scope="row">
                                     <label>제목</label>

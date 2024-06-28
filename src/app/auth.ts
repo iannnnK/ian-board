@@ -1,5 +1,5 @@
 import { login } from "@/components/user/CustomUserLoginBtn";
-import NextAuth from "next-auth";
+import NextAuth, { CredentialsSignin } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -26,12 +26,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
                 // logic to verify if user exists
                 user = await getUserFromDb(credentials.email, pwHash);
-                console.log('user', user);
 
                 if (!user) {
                     // No user found, so this is their first attempt to login
                     // meaning this is also the place you could do registration
-                    throw new Error("User not found.");
+                    // throw new Error("User not found.");
+                    throw new CredentialsSignin(
+                        "아이디 또는 비밀번호가 일치하지 않습니다~~"
+                    );
                 }
 
                 // return user object with the their profile data
@@ -45,6 +47,7 @@ function saltAndHashPassword(password: unknown) {
     return password;
 }
 
-function getUserFromDb(email: unknown, pwHash: any): Promise<any> {
-    return login(email, pwHash);
+async function getUserFromDb(email: unknown, pwHash: any): Promise<any> {
+    const target = await login(email, pwHash);
+    return target;
 }

@@ -23,16 +23,11 @@ async function login(email: string, password: string) {
         }
 
         const target = await response.json();
-        if (
-            target === null ||
-            target === undefined ||
-            target.password !== password
-        ) {
-            alert("아이디 또는 비밀번호가 일치하지 않습니다.");
-            return;
+        if(!(target && target.password == password)) {
+            console.log('아이디 또는 비밀번호가 일치하지 않습니다.');
+            return null;
         }
         return target;
-        // window.location.href = "/board";
     } catch (error) {
         console.log("Error : ", error);
     }
