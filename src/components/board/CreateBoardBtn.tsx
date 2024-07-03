@@ -11,17 +11,18 @@ interface BoardCreateDto {
 }
 
 export default function CreateBoardBtn({ title, content }) {
-    const {data: session} = useSession();
+    // const {data: session} = useSession();
 
     const handleClick = async (event: { preventDefault: () => void }) => {
         event.preventDefault();
-        const author = await getAuthorIdByEmail(session?.user?.email);
+        // const author = await getAuthorIdByEmail(session?.user?.email);
 
         const boardCreateDto = {
             title: title,
             content: content,
             create_at: new Date(),
-            authorId: author.id,
+            // authorId: author.id,
+            authorId: 1,
         };
 
         console.log("boardCreateDto", boardCreateDto);

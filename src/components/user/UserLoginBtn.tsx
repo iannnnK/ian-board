@@ -1,9 +1,10 @@
-import { signIn, useSession } from "next-auth/react";
+import { useRouter } from 'next/navigation';
 
 export default function UserLoginBtn() {
+    const router = useRouter();
     return (
         <>
-            <button onClick={() => signIn()}>로그인</button>
+            <button onClick={() => router.push("/user/login")}>로그인</button>
         </>
     );
 }

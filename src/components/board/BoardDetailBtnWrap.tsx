@@ -7,9 +7,10 @@ import { NextRequest } from "next/server";
 
 export default function BoardDetailBtnWrap({ id, email }) {
     const router = useRouter();
-    const { data: session } = useSession();
+    // const { data: session } = useSession();
 
-    if (!checkAuthor({ session, email })) {
+    // if (!checkAuthor({ session, email })) {
+    if (true) {
         return <></>;
     }
 

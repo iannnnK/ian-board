@@ -1,5 +1,4 @@
 import BoardWriteRoutingBtn from "@/components/board/BoardWriteRoutingBtn";
-
 import BoardList from "../../components/board/BoardList";
 import BoardPagination from "@/components/board/BoardPagination";
 
@@ -37,7 +36,7 @@ export default function BoardPage() {
                     </thead>
 
                     <tbody>
-                        <BoardList id={0}/>
+                        <BoardList />
                     </tbody>
                 </table>
             </div>

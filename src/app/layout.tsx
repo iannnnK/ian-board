@@ -28,12 +28,12 @@ export default function RootLayout({
                     fontSans.variable
                 )}
             >
-                <SessionProvider>
+                {/* <SessionProvider> */}
                     <nav>
                         <UserAuthenticationBtn />
                     </nav>
                     {children}
-                </SessionProvider>
+                {/* </SessionProvider> */}
             </body>
         </html>
     );

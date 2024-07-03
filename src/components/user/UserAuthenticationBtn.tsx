@@ -1,17 +1,19 @@
 "use client";
 
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-import UserLoginBtn from './UserLoginBtn';
-import UserLogoutBtn from './UserLogoutBtn';
-
+import UserLoginBtn from "./UserLoginBtn";
+import UserLogoutBtn from "./UserLogoutBtn";
+import { getCookie } from "@/utils/cookie-manager";
 
 export default function UserAuthenticationBtn() {
-    const { data: session } = useSession();
+    // const { data: session } = useSession();
     const router = useRouter();
 
-    if (session && session.user) {
+    const token = getCookie("refreshToken");
+    // if (session && session.user) {
+    if (token) {
         return <UserLogoutBtn />;
     } else {
         return (
