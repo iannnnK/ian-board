@@ -1,6 +1,8 @@
 import { login } from "@/components/user/CustomUserLoginBtn";
-import NextAuth, { CredentialsSignin } from "next-auth";
+import { signInSchema } from "@/lib/zod";
+import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import { ZodError } from "zod";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
     providers: [
@@ -30,10 +32,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 if (!user) {
                     // No user found, so this is their first attempt to login
                     // meaning this is also the place you could do registration
-                    // throw new Error("User not found.");
-                    throw new CredentialsSignin(
-                        "아이디 또는 비밀번호가 일치하지 않습니다~~"
-                    );
+                    throw new Error("User not found.");
+                    
                 }
 
                 // return user object with the their profile data
